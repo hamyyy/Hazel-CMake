@@ -2,9 +2,13 @@
 **/bin/
 bin-int/
 Intermediates/
+build/
 
 # Hazel files
 *.log
+
+# Visual Studio files and folder
+.vscode/
 
 # Visual Studio files and folder
 .vs/

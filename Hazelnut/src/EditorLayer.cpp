@@ -39,7 +39,7 @@ namespace Hazel {
 		m_ActiveScene = m_EditorScene;
 
 		auto commandLineArgs = Application::Get().GetSpecification().CommandLineArgs;
-		if (commandLineArgs.Count > 1)
+		if (commandLineArgs.Count > 1 && false)
 		{
 			auto projectFilePath = commandLineArgs[1];
 			OpenProject(projectFilePath);
@@ -47,7 +47,7 @@ namespace Hazel {
 		else
 		{
 			// TODO(Yan): prompt the user to select a directory
-			// NewProject();
+			NewProject();
 
 			// If no project is opened, close Hazelnut
 			// NOTE: this is while we don't have a new project path

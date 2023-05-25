@@ -4,7 +4,6 @@
 #include "Hazel/Core/Log.h"
 
 #include "Hazel/Renderer/Renderer.h"
-#include "Hazel/Scripting/ScriptEngine.h"
 
 #include "Hazel/Core/Input.h"
 #include "Hazel/Utils/PlatformUtils.h"
@@ -38,7 +37,6 @@ namespace Hazel {
 	{
 		HZ_PROFILE_FUNCTION();
 
-		ScriptEngine::Shutdown();
 		Renderer::Shutdown();
 	}
 

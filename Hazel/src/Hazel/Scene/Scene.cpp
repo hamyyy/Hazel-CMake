@@ -4,7 +4,6 @@
 
 #include "Components.h"
 #include "ScriptableEntity.h"
-#include "Hazel/Scripting/ScriptEngine.h"
 #include "Hazel/Renderer/Renderer2D.h"
 #include "Hazel/Physics/Physics2D.h"
 
@@ -124,19 +123,6 @@ namespace Hazel {
 		m_IsRunning = true;
 
 		OnPhysics2DStart();
-
-		// Scripting
-		{
-			ScriptEngine::OnRuntimeStart(this);
-			// Instantiate all script entities
-
-			auto view = m_Registry.view<ScriptComponent>();
-			for (auto e : view)
-			{
-				Entity entity = { e, this };
-				ScriptEngine::OnCreateEntity(entity);
-			}
-		}
 	}
 
 	void Scene::OnRuntimeStop()
@@ -144,8 +130,6 @@ namespace Hazel {
 		m_IsRunning = false;
 
 		OnPhysics2DStop();
-
-		ScriptEngine::OnRuntimeStop();
 	}
 
 	void Scene::OnSimulationStart()
@@ -164,14 +148,6 @@ namespace Hazel {
 		{
 			// Update scripts
 			{
-				// C# Entity OnUpdate
-				auto view = m_Registry.view<ScriptComponent>();
-				for (auto e : view)
-				{
-					Entity entity = { e, this };
-					ScriptEngine::OnUpdateEntity(entity, ts);
-				}
-
 				m_Registry.view<NativeScriptComponent>().each([=](auto entity, auto& nsc)
 					{
 						// TODO: Move to Scene::OnScenePlay

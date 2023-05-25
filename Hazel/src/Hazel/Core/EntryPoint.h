@@ -6,8 +6,11 @@
 
 extern Hazel::Application* Hazel::CreateApplication(ApplicationCommandLineArgs args);
 
+#include <iostream>
+
 int main(int argc, char** argv)
 {
+	std::cout << "Hazel Engine" << std::endl;
 	Hazel::Log::Init();
 
 	HZ_PROFILE_BEGIN_SESSION("Startup", "HazelProfile-Startup.json");
